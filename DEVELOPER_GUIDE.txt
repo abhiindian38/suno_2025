@@ -1,0 +1,83 @@
+SUNO-2025: DEVELOPER DOCUMENTATION
+===================================
+
+PROJECT OVERVIEW
+----------------
+Suno-2025 is a premium cinematic discovery platform built with a "frontend-first" philosophy. It leverages the TMDB API for movie data while providing a high-fidelity, interactive UI inspired by modern streaming platforms and futuristic dashboards.
+
+TECH STACK
+----------
+- Core: React 18 + Vite (TypeScript)
+- Styling: Tailwind CSS (Utility-first CSS)
+- Animation: Framer Motion (Smooth page transitions and micro-interactions)
+- Icons: Lucide React
+- Routing: React Router v6
+- Data: LocalStorage (Persistence for favorites and feedback logs)
+
+FOLDER STRUCTURE
+----------------
+/src
+  /components
+    /layout: Core structural components (Navbar, Footer, PageWrapper, Container)
+    /movies: Movie-specific UI (MovieCard, MovieExplorer)
+    /ui: Reusable atomic components (SearchBar, NeonButton, AmbientBackground)
+  /config: Static configurations (industries.ts, constants)
+  /hooks: Custom logic hooks (useMovies, useFavorites, useDebounce)
+  /pages: Main route views (Home, Movies, Search, Feedback, MovieDetail)
+  /services: API orchestration (tmdb.ts, spotify.ts, youtube.ts)
+  /lib: Utility functions (utils.ts)
+
+CORE LOGIC EXPLAINED
+--------------------
+1. SEARCH LOGIC
+   - The `SearchBar` component manages an internal typing state to ensure zero lag.
+   - It uses a custom `useDebounce` hook (500ms) to emit the search query.
+   - The `Search.tsx` page syncs this query to the URL parameter `?q=`.
+   - The `useMovies` hook reacts to query changes and calls the TMDB search service.
+
+2. INDUSTRY FILTERING
+   - Industries are defined in `src/config/industries.ts`.
+   - `Movies.tsx` uses the `:industry` URL parameter via `useParams`.
+   - The `useMovies` hook takes this param and calls `fetchMoviesByIndustry`.
+
+3. FEEDBACK SYSTEM (FRONTEND-ONLY)
+   - CAPTURE: Data is captured via the controlled form in `src/pages/Feedback.tsx`. The `handleSubmit` function prepares a JSON object with a unique ID and ISO timestamp.
+   - PERSISTENCE: Entries are stored in `localStorage` under the key `suno_feedback_logs`.
+   - VIEWING: Developers can view submitted signals in two ways:
+      1. UI DASHBOARD: Navigate to `/feedback/dashboard` (Intelligence Archives).
+      2. PERSISTENCE CHECK: Inspect `localStorage` via Browser DevTools -> Application -> Local Storage.
+
+BACKEND INTEGRATION POINTS
+--------------------------
+To transition from a static frontend to a live backend:
+- FEEDBACK: Replace the `localStorage` logic in `Feedback.tsx` with a POST request to your API endpoint.
+- FAVORITES: Currently synced via `localStorage`. For multi-device support, create a `favorites` table in your database and update `useFavorites.ts` to sync with your backend.
+- AUTHENTICATION: The `profile` route is currently a placeholder. This is where you would integrate Clerk, Supabase, or Firebase Auth.
+
+UI FLOW PRESERVATION (CRITICAL: DO NOT CHANGE)
+---------------------------------------------
+To maintain the "Calm & Intentional" UX, avoid modifying these core patterns:
+- PAGE ENTRANCE: All pages MUST be wrapped in `PageWrapper`. Its `motion` variants handle the subtle fade-in and top-padding logic.
+- SEARCH STABILITY: The `SearchBar` emits debounced values to avoid layout thrashing. Do not remove the internal `query` state or the `useDebounce` hook.
+- NAVBAR VISIBILITY: The Navbar hides on `/movie/:id` routes via logic in `Navbar.tsx`. Do not change the hook order or move this conditional return.
+
+MAINTENANCE & MODIFICATION
+--------------------------
+- TO ADD A NEW INDUSTRY: Edit `src/config/industries.ts` and add a new object to the array. Ensure you provide a Lucide icon.
+- TO UPDATE MOVIE DATA: The system fetches live data from TMDB. To change the target years or genres, modify `src/services/api/tmdb.ts`.
+
+UI CONSISTENCY BEST PRACTICES
+-----------------------------
+- SPACING: Always wrap page content in `PageWrapper` to ensure consistent top padding and entrance animations.
+- HEADERS: Use the `PageHeader` component for all page titles to maintain alignment.
+- GLASSMORPHISM: Apply the `.glass-panel` class for containers. Ensure borders are subtle (`rgba(255, 255, 255, 0.05)`).
+- NEON GLOWS: Follow the `shadow-[0_0_Xpx_rgba(0,240,255,Y)]` pattern for primary accent glows.
+
+PERFORMANCE & RESPONSIVENESS
+----------------------------
+- LAZY LOADING: All pages are lazy-loaded in `App.tsx` to keep the initial bundle small.
+- 60FPS TARGET: Avoid heavy filters on mobile. Use `layout` and `AnimatePresence` from Framer Motion sparingly to prevent layout thrashing.
+- RESPONSIVENESS: Use Tailwind's `md:`, `lg:`, and `xl:` prefixes. Ensure `Container` is used to cap maximum width on ultra-wide screens.
+
+===================================
+MAINTENANCE FOCUS: 2025 RELEASE STABLE

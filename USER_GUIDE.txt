@@ -1,0 +1,29 @@
+SUNO-2025: YOUR CINEMATIC MULTIVERSE GUIDE
+==========================================
+
+Welcome to Suno-2025, a premium cinematic discovery platform designed to help you explore the latest movies and their frequencies across the multiverse.
+
+Follow these simple steps to begin your journey:
+
+1. HOW TO EXPLORE INDUSTRIES
+   From the main menu (Navbar), click on "Movies." You will see a row of circular industry icons (like Bollywood, Tollywood, etc.). Click on any of these icons to instantly filter movies by that specific film industry.
+
+2. HOW TO BROWSE MOVIES
+   Once you are in the Movies section, you can scroll down to see a grid of movie cards. Each card gives you a quick look at the movie's title, release year, and rating.
+
+3. HOW TO SEARCH MOVIES
+   Click the "Search" link in the navigation bar. Type the name of any movie or actor into the search box. The multiverse will scan its frequencies and display matching results instantly as you type.
+
+4. HOW TO OPEN MOVIE DETAILS
+   Click anywhere on a movie card to open its dedicated "Intelligence Report" (Movie Detail page). Here you can see a large poster, a full description of the movie, and its tracklist.
+
+5. HOW TO USE SPOTIFY & YOUTUBE LINKS
+   Inside a movie's details, you will find a list of songs. 
+   - Click the "Spotify" button to listen to a high-quality preview of the track.
+   - Click the "YouTube" button to watch the official music video or frequency broadcast.
+
+6. HOW TO SUBMIT FEEDBACK
+   We value your signal! Click the "Feedback" link in the navigation bar. Enter your name (optional) and your suggestion or bug report, then click "Broadcast Signal." Your feedback is transmitted directly to our archives for system refinement.
+
+Thank you for choosing Suno-2025. Enjoy the experience!
+==========================================
