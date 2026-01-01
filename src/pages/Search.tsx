@@ -64,7 +64,12 @@ export default function Search() {
                         <p className="text-slate-400">{error}</p>
                     </div>
                 ) : loading ? (
-                    <div className="flex flex-col items-center justify-center h-[40vh] space-y-6">
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="flex flex-col items-center justify-center h-[40vh] space-y-6"
+                    >
                         <div className="relative w-20 h-20">
                             <motion.div
                                 animate={{ rotate: 360 }}
@@ -78,7 +83,7 @@ export default function Search() {
                             />
                         </div>
                         <p className="text-xs font-black text-primary uppercase tracking-[0.5em] animate-pulse">Scanning Frequencies...</p>
-                    </div>
+                    </motion.div>
                 ) : (
                     <AnimatePresence mode="wait">
                         {results.length === 0 ? (
@@ -105,7 +110,10 @@ export default function Search() {
                                     hidden: { opacity: 0 },
                                     show: {
                                         opacity: 1,
-                                        transition: { staggerChildren: 0.1 }
+                                        transition: {
+                                            staggerChildren: 0.05,
+                                            delayChildren: 0.1
+                                        }
                                     }
                                 }}
                                 className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-8 xl:gap-10"

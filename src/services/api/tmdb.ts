@@ -6,7 +6,7 @@ const TMDB_IMAGE_BASE = 'https://image.tmdb.org/t/p';
 const tmdb = axios.create({
     baseURL: TMDB_BASE_URL,
     params: {
-        api_key: import.meta.env.VITE_TMDB_API_KEY || '1b41ea65a9a444207ac3f97023ca82cb',
+        api_key: import.meta.env.VITE_TMDB_API_KEY,
     },
 });
 
@@ -71,13 +71,15 @@ export const tmdbAPI = {
         };
     },
 
-    // Search movies
-    searchMovies: async (query: string, year: number = 2025) => {
+    // Search movies (without year restriction for broader results)
+    searchMovies: async (query: string, year?: number) => {
+        const params: { query: string; year?: number } = { query };
+        if (year) {
+            params.year = year;
+        }
+
         const response = await tmdb.get('/search/movie', {
-            params: {
-                query,
-                year,
-            },
+            params,
         });
         return response.data.results;
     },

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PageHeader } from '../components/layout/PageHeader';
 import { Trash2, ShieldAlert, Cpu, Activity, Clock, User } from 'lucide-react';
@@ -13,12 +13,11 @@ interface FeedbackEntry {
 }
 
 export default function FeedbackDashboard() {
-    const [logs, setLogs] = useState<FeedbackEntry[]>([]);
-
-    useEffect(() => {
-        const storedLogs = JSON.parse(localStorage.getItem('suno_feedback_logs') || '[]');
-        setLogs(storedLogs);
-    }, []);
+    // Lazy initialization: only runs once on mount, avoiding the setState-in-effect warning
+    const [logs, setLogs] = useState<FeedbackEntry[]>(() => {
+        const storedLogs = localStorage.getItem('suno_feedback_logs');
+        return storedLogs ? JSON.parse(storedLogs) : [];
+    });
 
     const deleteLog = (id: string) => {
         const updatedLogs = logs.filter(log => log.id !== id);

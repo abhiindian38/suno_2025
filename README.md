@@ -2,6 +2,8 @@
 
 **Suno 2025** is a high-fidelity, futuristic discovery platform for the Indian cinematic landscape of 2025. Designed as an "Intelligence Interface," it provides an immersive, audio-visual journey into the frequencies of the multiverse, blending the aesthetics of top-tier streaming services with advanced futuristic UI metaphors.
 
+🚀 **[Live Demo](https://suno-2025.vercel.app)** (Coming Soon)
+
 ---
 
 ## ✨ Features of the Void
@@ -55,12 +57,20 @@ Initialize audio broadcasts with seamless Spotify previews and official YouTube 
     npm install
     ```
 
-3.  Start the development server:
+3.  Create a `.env.local` file in the root directory with your API keys:
+    ```bash
+    VITE_TMDB_API_KEY=your_tmdb_api_key_here
+    VITE_SPOTIFY_CLIENT_ID=your_spotify_client_id
+    VITE_SPOTIFY_CLIENT_SECRET=your_spotify_client_secret
+    VITE_YOUTUBE_API_KEY=your_youtube_api_key
+    ```
+
+4.  Start the development server:
     ```bash
     npm run dev
     ```
 
-4.  Open [http://localhost:5173](http://localhost:5173) in your browser.
+5.  Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ## 📂 Project Structure
 

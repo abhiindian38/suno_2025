@@ -24,7 +24,7 @@ export default function Footer() {
             >
                 <div className="relative group cursor-default">
                     <span className="text-[9px] md:text-[11px] font-medium tracking-[0.5em] uppercase text-white/20 transition-all duration-1000 group-hover:text-white/40 group-hover:tracking-[0.55em]">
-                        Developed by <span className="text-white/40 group-hover:text-primary transition-all duration-700">Abhishek</span> • {currentYear}
+                        Developed by <a href="https://x.com/whyabhishekh" target="_blank" rel="noopener noreferrer" className="text-white/40 group-hover:text-primary transition-all duration-700 hover:underline decoration-primary/50 underline-offset-2 cursor-pointer">Abhishek</a> • {currentYear}
                     </span>
 
                     {/* Subtle precise glow behind the text */}
