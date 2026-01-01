@@ -1,4 +1,9 @@
 # 🎙️ Suno 2025: The Cinematic Multiverse
+Welcome to Suno 2025 — a place where Indian movies of 2025 come together like a perfect playlist on a late-night drive 🚗🎶
+This website is basically my excuse to mix movies, songs, vibes, and a little bit of overthinking into one place. You click a movie, you get its songs, and suddenly you’re either:
+
+Anyone entering a brand new year with new hopes, new playlists, and old memories ✨
+As the year ends and a new one begins 🎆
 
 **Suno 2025** is a high-fidelity, futuristic discovery platform for the Indian cinematic landscape of 2025. Designed as an "Intelligence Interface," it provides an immersive, audio-visual journey into the frequencies of the multiverse, blending the aesthetics of top-tier streaming services with advanced futuristic UI metaphors.
 
