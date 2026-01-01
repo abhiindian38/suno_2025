@@ -67,7 +67,7 @@ export const PageHeader = ({
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.2 }}
-                            className="text-white/60 max-w-2xl text-lg"
+                            className="text-white/60 max-w-2xl text-sm sm:text-base md:text-lg"
                         >
                             {subtitle}
                         </motion.div>

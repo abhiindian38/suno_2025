@@ -53,15 +53,15 @@ export default function SongCard({ song, index }: SongCardProps) {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex items-center gap-3 w-full sm:w-auto mt-2 sm:mt-0">
+                <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto mt-2 sm:mt-0">
                     {/* Spotify Button */}
                     <a
                         href={song.spotify_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 py-3 bg-[#1DB954]/10 hover:bg-[#1DB954]/20 border border-[#1DB954]/20 hover:border-[#1DB954]/50 rounded-xl text-[#1DB954] font-black text-[10px] sm:text-xs uppercase tracking-[0.1em] transition-all duration-300 hover:shadow-[0_0_15px_rgba(29,185,84,0.3)] hover:-translate-y-0.5"
+                        className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 sm:px-5 py-2.5 sm:py-3 bg-[#1DB954]/10 hover:bg-[#1DB954]/20 border border-[#1DB954]/20 hover:border-[#1DB954]/50 rounded-xl text-[#1DB954] font-black text-[9px] sm:text-xs uppercase tracking-[0.1em] transition-all duration-300 hover:shadow-[0_0_15px_rgba(29,185,84,0.3)] hover:-translate-y-0.5 touch-target"
                     >
-                        <Music2 className="w-4 h-4" />
+                        <Music2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                         <span className="sm:inline">Spotify</span>
                     </a>
 
@@ -73,9 +73,9 @@ export default function SongCard({ song, index }: SongCardProps) {
                         }
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 py-3 bg-[#FF0000]/10 hover:bg-[#FF0000]/20 border border-[#FF0000]/20 hover:border-[#FF0000]/50 rounded-xl text-[#FF0000] font-black text-[10px] sm:text-xs uppercase tracking-[0.1em] transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,0,0,0.3)] hover:-translate-y-0.5"
+                        className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 sm:px-5 py-2.5 sm:py-3 bg-[#FF0000]/10 hover:bg-[#FF0000]/20 border border-[#FF0000]/20 hover:border-[#FF0000]/50 rounded-xl text-[#FF0000] font-black text-[9px] sm:text-xs uppercase tracking-[0.1em] transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,0,0,0.3)] hover:-translate-y-0.5 touch-target"
                     >
-                        <Youtube className="w-4 h-4" />
+                        <Youtube className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                         <span className="sm:inline">YouTube</span>
                     </a>
                 </div>

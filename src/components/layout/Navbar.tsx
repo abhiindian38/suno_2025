@@ -94,7 +94,7 @@ export default function Navbar() {
                                 <Link
                                     to={link.path}
                                     className={cn(
-                                        "flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-300 ease-out group",
+                                        "flex items-center gap-2 px-3 lg:px-4 py-2 rounded-xl transition-all duration-300 ease-out group touch-target",
                                         isActive
                                             ? "text-primary bg-primary/10 shadow-[0_0_25px_rgba(0,240,255,0.15)] ring-1 ring-primary/20"
                                             : "text-slate-400 hover:text-white hover:bg-white/5"
@@ -104,7 +104,7 @@ export default function Navbar() {
                                         "w-4 h-4 transition-transform duration-300 group-hover:scale-110",
                                         isActive && "text-primary filter drop-shadow-[0_0_5px_rgba(0,240,255,0.5)]"
                                     )} />
-                                    <span className="text-xs font-black uppercase tracking-widest leading-none">{link.name}</span>
+                                    <span className="text-[10px] lg:text-xs font-black uppercase tracking-widest leading-none">{link.name}</span>
                                 </Link>
                             </motion.div>
                         );
@@ -117,7 +117,7 @@ export default function Navbar() {
                         whileHover={{ y: -2 }}
                         whileTap={{ scale: 0.95 }}
                         className={cn(
-                            "flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-300 ease-out group glass-panel",
+                            "flex items-center gap-2 px-3 lg:px-4 py-2 rounded-xl transition-all duration-300 ease-out group glass-panel touch-target",
                             "text-accent border border-accent/20 hover:border-accent hover:bg-accent/10 shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.2)]"
                         )}
                     >
@@ -127,7 +127,7 @@ export default function Navbar() {
                         >
                             <Dices className="w-4 h-4" />
                         </motion.div>
-                        <span className="text-xs font-black uppercase tracking-widest leading-none truncate max-w-[100px]">
+                        <span className="text-[10px] lg:text-xs font-black uppercase tracking-widest leading-none truncate max-w-[70px] lg:max-w-[100px]">
                             {isShuffling ? 'SHUFFLIN...' : 'SURPRISE ME'}
                         </span>
                     </motion.button>
@@ -139,7 +139,7 @@ export default function Navbar() {
                         onClick={handleSurprise}
                         disabled={isShuffling}
                         whileTap={{ scale: 0.9 }}
-                        className="p-2 rounded-xl bg-accent/20 text-accent border border-accent/30 shadow-[0_0_15px_rgba(168,85,247,0.1)]"
+                        className="p-2.5 rounded-xl bg-accent/20 text-accent border border-accent/30 shadow-[0_0_15px_rgba(168,85,247,0.1)] touch-target"
                     >
                         <motion.div
                             animate={isShuffling ? { rotate: 360 } : {}}
@@ -153,26 +153,30 @@ export default function Navbar() {
                             setIsMobileMenuOpen(!isMobileMenuOpen);
                         }}
                         whileTap={{ scale: 0.9 }}
-                        className="p-2 text-slate-400 hover:text-white transition-colors duration-300"
+                        className="p-2.5 text-slate-400 hover:text-white transition-colors duration-300 touch-target"
                     >
                         {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                     </motion.button>
                 </div>
             </div>
 
-            {/* Mobile Menu Overlay */}
+            {/* Mobile Menu Overlay - Moved inside but adjusted for stacking context */}
             <AnimatePresence>
                 {isMobileMenuOpen && (
                     <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="fixed inset-0 top-[var(--navbar-height-mobile)] bg-background/98 backdrop-blur-3xl z-40 md:hidden p-6"
+                        key="mobile-menu-overlay"
+                        initial="closed"
+                        animate="open"
+                        exit="closed"
+                        variants={{
+                            open: { opacity: 1, y: 0 },
+                            closed: { opacity: 0, y: -20 }
+                        }}
+                        transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                        className="fixed inset-0 top-[var(--navbar-height-mobile)] bg-[#030014]/80 backdrop-blur-3xl z-[100] md:hidden p-4 sm:p-6 overflow-y-auto touch-action-pan h-[calc(100vh-var(--navbar-height-mobile))] border-t border-white/5"
                     >
                         <motion.div
                             className="flex flex-col gap-4"
-                            initial="closed"
-                            animate="open"
                             variants={{
                                 open: {
                                     transition: { staggerChildren: 0.1 }

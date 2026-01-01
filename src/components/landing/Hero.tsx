@@ -47,7 +47,7 @@ export default function Hero() {
     }, []);
 
     return (
-        <section className="relative min-h-[120vh] flex items-center justify-center overflow-hidden">
+        <section className="relative min-h-screen md:min-h-[110vh] flex items-center justify-center overflow-hidden">
             {/* Cinematic Background Layer */}
             <div className="absolute inset-0 z-0">
                 <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background" />
@@ -79,8 +79,8 @@ export default function Hero() {
                 ))}
             </div>
 
-            {/* Orbiting Elements Layer (Z-Axis Depth) */}
-            <div className="absolute inset-0 pointer-events-none perspective-1000 overflow-hidden">
+            {/* Orbiting Elements Layer (Z-Axis Depth) - Hidden on mobile for performance */}
+            <div className="absolute inset-0 pointer-events-none perspective-1000 overflow-hidden hidden md:block">
                 {posters.map((url, i) => (
                     <motion.div
                         key={i}
@@ -108,7 +108,7 @@ export default function Hero() {
             </div>
 
             {/* Main Content */}
-            <div className="container mx-auto px-6 relative z-10 text-center">
+            <div className="container mx-auto px-4 sm:px-6 relative z-10 text-center">
                 <motion.div
                     style={{ y: y1, opacity }}
                     className="flex flex-col items-center"
@@ -117,10 +117,10 @@ export default function Hero() {
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="mb-8 px-4 py-1.5 rounded-full border border-primary/40 bg-black/60 backdrop-blur-md flex items-center gap-2.5 group cursor-default shadow-lg shadow-primary/5"
+                        className="mb-6 md:mb-8 px-3 md:px-4 py-1.5 rounded-full border border-primary/40 bg-black/60 backdrop-blur-md flex items-center gap-2 md:gap-2.5 group cursor-default shadow-lg shadow-primary/5"
                     >
-                        <Zap className="w-3.5 h-3.5 text-primary fill-primary" />
-                        <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-white group-hover:text-primary transition-colors">
+                        <Zap className="w-3 h-3 md:w-3.5 md:h-3.5 text-primary fill-primary" />
+                        <span className="text-[9px] md:text-[11px] font-bold uppercase tracking-[0.15em] md:tracking-[0.2em] text-white group-hover:text-primary transition-colors">
                             Neural Sync Activated
                         </span>
                     </motion.div>
@@ -161,13 +161,13 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4 }}
-                        className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+                        className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center w-full px-4"
                     >
-                        <Link to="/movies">
+                        <Link to="/movies" className="w-full sm:w-auto">
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="relative bg-primary text-black px-8 py-3.5 rounded-lg text-xs font-black uppercase tracking-[0.2em] shadow-[0_0_15px_rgba(0,240,255,0.4)] hover:shadow-[0_0_25px_rgba(0,240,255,0.6)] transition-all duration-300"
+                                className="relative bg-primary text-black w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg text-[10px] sm:text-xs font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] shadow-[0_0_15px_rgba(0,240,255,0.4)] hover:shadow-[0_0_25px_rgba(0,240,255,0.6)] transition-all duration-300 touch-target"
                             >
                                 Enter the Multiverse
                             </motion.button>
@@ -185,11 +185,11 @@ export default function Hero() {
             <motion.div
                 animate={{ y: [0, 10, 0] }}
                 transition={{ repeat: Infinity, duration: 2 }}
-                className="absolute bottom-10 left-1/2 -translate-x-1/2 cursor-pointer z-20 flex flex-col items-center gap-3"
+                className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 cursor-pointer z-20 flex flex-col items-center gap-2 md:gap-3"
                 onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
             >
-                <span className="text-meta text-primary opacity-70">Deep Dive</span>
-                <div className="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent shadow-[0_0_10px_rgba(0,240,255,0.3)]" />
+                <span className="text-[9px] md:text-meta text-primary opacity-70">Deep Dive</span>
+                <div className="w-[1px] h-8 md:h-12 bg-gradient-to-b from-primary to-transparent shadow-[0_0_10px_rgba(0,240,255,0.3)]" />
             </motion.div>
         </section>
     );

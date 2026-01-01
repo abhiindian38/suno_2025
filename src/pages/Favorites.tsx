@@ -28,7 +28,7 @@ export default function Favorites() {
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="glass-panel rounded-3xl p-12 md:p-24 text-center border border-white/10 flex flex-col items-center justify-center min-h-[500px]"
+                        className="glass-panel rounded-[2rem] p-8 sm:p-12 md:p-24 text-center border border-white/10 flex flex-col items-center justify-center min-h-[400px] sm:min-h-[500px]"
                     >
                         <div className="w-24 h-24 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-8 shadow-cinematic">
                             <span className="text-5xl grayscale opacity-50">💔</span>

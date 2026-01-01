@@ -64,8 +64,8 @@ export const SearchBar: React.FC<SearchBarProps> = ({
                         autoFocus={autoFocus}
                         style={{ color: '#FFFFFF' }}
                         className={cn(
-                            "w-full bg-surface/60 backdrop-blur-2xl border border-white/10 rounded-3xl py-4 pl-14 pr-14",
-                            "!text-white placeholder:text-slate-400 text-base font-semibold",
+                            "w-full bg-surface/60 backdrop-blur-2xl border border-white/10 rounded-2xl md:rounded-3xl py-2.5 md:py-4 pl-12 md:pl-14 pr-12 md:pr-14",
+                            "!text-white placeholder:text-slate-400 text-sm md:text-base font-semibold",
                             "focus:outline-none focus:border-primary/60 focus:ring-2 focus:ring-primary/30",
                             "focus:bg-surface/70 focus:shadow-[0_0_30px_rgba(0,240,255,0.15)]",
                             "transition-all duration-500 ease-out",
@@ -82,10 +82,10 @@ export const SearchBar: React.FC<SearchBarProps> = ({
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.8 }}
                                 onClick={handleClear}
-                                className="absolute right-5 p-1.5 rounded-full hover:bg-white/10 text-slate-400 hover:text-white transition-all duration-300 z-30"
+                                className="absolute right-4 md:right-5 p-1.5 md:p-2 rounded-full hover:bg-white/10 text-slate-400 hover:text-white transition-all duration-300 z-30 touch-target"
                                 type="button"
                             >
-                                <X size={18} strokeWidth={2.5} />
+                                <X className="w-4 h-4 md:w-[18px] md:h-[18px]" strokeWidth={2.5} />
                             </motion.button>
                         )}
                     </AnimatePresence>
@@ -98,18 +98,18 @@ export const SearchBar: React.FC<SearchBarProps> = ({
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className={cn(
-                        "px-8 py-4 rounded-3xl font-black uppercase tracking-wider text-sm",
+                        "px-6 md:px-8 py-2.5 md:py-4 rounded-2xl md:rounded-3xl font-black uppercase tracking-wider text-[10px] md:text-sm",
                         "bg-gradient-to-r from-primary to-accent",
                         "text-black shadow-lg shadow-primary/30",
                         "hover:shadow-xl hover:shadow-primary/50",
                         "transition-all duration-300",
                         "disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100",
-                        "relative z-20 flex items-center gap-2"
+                        "relative z-20 flex items-center gap-2 touch-target"
                     )}
                     type="button"
                 >
-                    <Search size={18} strokeWidth={3} />
-                    <span>Scan</span>
+                    <Search className="w-3.5 h-3.5 md:w-[18px] md:h-[18px]" strokeWidth={3} />
+                    <span className="hidden xs:inline">Scan</span>
                 </motion.button>
             </div>
         </div>

@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { Heart, Star, Play } from 'lucide-react';
+import { Heart, Star, Play, Film } from 'lucide-react';
 import { tmdbAPI, type Movie } from '../../services/api/tmdb';
 import { cn } from '../../lib/utils';
 
@@ -59,24 +59,33 @@ export const MovieCard = ({ movie, isSelected, onSelect, isFavorite, onToggleFav
             {/* Poster Image */}
             <motion.div
                 style={{ translateZ: 20 }}
-                className="absolute inset-0 z-0"
+                className="absolute inset-0 z-0 bg-gradient-to-br from-white/5 to-transparent"
             >
-                <img
-                    src={tmdbAPI.getImageUrl(movie.poster_path)}
-                    alt={movie.title}
-                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:blur-[2px]"
-                    loading="lazy"
-                />
+                {movie.poster_path ? (
+                    <img
+                        src={tmdbAPI.getImageUrl(movie.poster_path)}
+                        alt={movie.title}
+                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:blur-[2px]"
+                        loading="lazy"
+                        onError={(e) => {
+                            (e.target as HTMLImageElement).src = 'https://via.placeholder.com/500x750/141416/FFFFFF?text=No+Poster';
+                        }}
+                    />
+                ) : (
+                    <div className="w-full h-full flex items-center justify-center bg-surface">
+                        <Film className="w-12 h-12 text-white/10" />
+                    </div>
+                )}
             </motion.div>
 
             {/* Floating Glass UI */}
-            <div className="absolute inset-0 z-10 flex flex-col justify-between p-6 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-500 translate-y-0 lg:translate-y-4 lg:group-hover:translate-y-0">
+            <div className="absolute inset-0 z-10 flex flex-col justify-between p-4 sm:p-6 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-500 translate-y-0 lg:translate-y-4 lg:group-hover:translate-y-0 bg-gradient-to-t from-black/80 via-transparent to-transparent lg:from-transparent">
                 <div className="flex justify-between items-start">
                     <motion.div
                         style={{ translateZ: 50 }}
-                        className="bg-black/40 backdrop-blur-md border border-white/10 p-2.5 rounded-2xl"
+                        className="bg-black/40 backdrop-blur-md border border-white/10 p-2 sm:p-2.5 rounded-xl sm:rounded-2xl"
                     >
-                        <span className="text-white text-[10px] font-black uppercase tracking-widest">{movie.release_date?.split('-')[0]}</span>
+                        <span className="text-white text-[9px] sm:text-[10px] font-black uppercase tracking-widest">{movie.release_date?.split('-')[0]}</span>
                     </motion.div>
 
                     {onToggleFavorite && (
@@ -89,7 +98,7 @@ export const MovieCard = ({ movie, isSelected, onSelect, isFavorite, onToggleFav
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
-                            className="bg-black/40 backdrop-blur-md border border-white/10 p-2.5 rounded-2xl hover:bg-accent/20 transition-all"
+                            className="bg-black/40 backdrop-blur-md border border-white/10 p-2.5 rounded-xl sm:rounded-2xl hover:bg-accent/20 transition-all touch-target"
                         >
                             <Heart
                                 size={18}
@@ -99,7 +108,7 @@ export const MovieCard = ({ movie, isSelected, onSelect, isFavorite, onToggleFav
                     )}
                 </div>
 
-                <div className="space-y-4 translate-y-0 lg:translate-y-2 lg:group-hover:translate-y-0 transition-transform duration-700">
+                <div className="space-y-3 sm:space-y-4 translate-y-0 lg:translate-y-2 lg:group-hover:translate-y-0 transition-transform duration-700">
                     <div className="space-y-1">
                         <div className="flex items-center gap-2 mb-1">
                             <Star className="w-3 h-3 text-yellow-400 fill-current" />
@@ -107,7 +116,7 @@ export const MovieCard = ({ movie, isSelected, onSelect, isFavorite, onToggleFav
                         </div>
                         <motion.h3
                             style={{ translateZ: 60 }}
-                            className="text-white font-black text-2xl leading-none uppercase tracking-tighter italic"
+                            className="text-white font-black text-xl sm:text-2xl leading-none uppercase tracking-tighter italic"
                         >
                             {movie.title}
                         </motion.h3>
@@ -115,7 +124,7 @@ export const MovieCard = ({ movie, isSelected, onSelect, isFavorite, onToggleFav
 
                     <motion.div
                         style={{ translateZ: 40 }}
-                        className="flex items-center gap-2 text-primary font-black text-[9px] uppercase tracking-[0.2em] bg-primary/10 px-3 py-1.5 rounded-full border border-primary/20 group-hover:bg-primary group-hover:text-background transition-colors duration-300"
+                        className="flex items-center gap-2 text-primary font-black text-[8px] sm:text-[9px] uppercase tracking-[0.2em] bg-primary/10 px-3 py-1.5 sm:py-2 rounded-full border border-primary/20 group-hover:bg-primary group-hover:text-background transition-colors duration-300"
                     >
                         <Play className="w-3 h-3 fill-current" />
                         Initialize Audio

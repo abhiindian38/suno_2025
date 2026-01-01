@@ -40,7 +40,7 @@ export default function Search() {
                         }
                         subtitle="Search for movies, soundtracks, and frequencies across the cinematic void."
                         breadcrumbs={[{ label: 'Search' }]}
-                        className="mb-0"
+                        className="mb-0 px-4"
                     />
 
                     <motion.div
@@ -52,7 +52,7 @@ export default function Search() {
                             initialValue={query}
                             onSearch={(q) => setQuery(q)}
                             placeholder="Type to scan frequencies..."
-                            className="max-w-2xl transform lg:scale-110 shadow-cinematic hover:shadow-primary/20 transition-all duration-500"
+                            className="max-w-2xl transform md:scale-110 shadow-cinematic hover:shadow-primary/20 transition-all duration-500"
                             autoFocus
                         />
                     </motion.div>
@@ -116,7 +116,7 @@ export default function Search() {
                                         }
                                     }
                                 }}
-                                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-8 xl:gap-10"
+                                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 sm:gap-8 xl:gap-10"
                             >
                                 {results.map((movie) => (
                                     <motion.div

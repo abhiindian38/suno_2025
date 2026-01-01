@@ -62,14 +62,14 @@ const Movies = () => {
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.95 }}
                             className={cn(
-                                "w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center transition-all duration-500 border glass-panel",
+                                "w-14 h-14 sm:w-16 md:w-20 sm:h-20 rounded-full flex items-center justify-center transition-all duration-500 border glass-panel",
                                 !industry
                                     ? "bg-primary/20 border-primary shadow-[0_0_30px_rgba(0,240,255,0.4)] scale-110"
                                     : "bg-surface/50 border-white/10 group-hover:border-primary/50 group-hover:bg-primary/10"
                             )}
                         >
                             <Film className={cn(
-                                "w-6 h-6 sm:w-8 sm:h-8 transition-colors duration-500",
+                                "w-5 h-5 sm:w-6 md:w-8 sm:h-8 transition-colors duration-500",
                                 !industry ? "text-primary " : "text-slate-400 group-hover:text-primary"
                             )} />
 
@@ -100,14 +100,14 @@ const Movies = () => {
                                     whileHover={{ scale: 1.1 }}
                                     whileTap={{ scale: 0.95 }}
                                     className={cn(
-                                        "w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center transition-all duration-500 border glass-panel",
+                                        "w-14 h-14 sm:w-16 md:w-20 sm:h-20 rounded-full flex items-center justify-center transition-all duration-500 border glass-panel",
                                         isActive
                                             ? "bg-primary/20 border-primary shadow-[0_0_30px_rgba(0,240,255,0.4)] scale-110"
                                             : "bg-surface/50 border-white/10 group-hover:border-primary/50 group-hover:bg-primary/10"
                                     )}
                                 >
                                     <Icon className={cn(
-                                        "w-6 h-6 sm:w-8 sm:h-8 transition-colors duration-500",
+                                        "w-5 h-5 sm:w-6 md:w-8 sm:h-8 transition-colors duration-500",
                                         isActive ? "text-primary" : "text-slate-400 group-hover:text-primary"
                                     )} />
 
@@ -127,6 +127,7 @@ const Movies = () => {
                     })}
                 </div>
                 <motion.div
+                    key={`movie-grid-${industry || 'all'}`}
                     variants={{
                         hidden: { opacity: 0 },
                         show: {
@@ -138,25 +139,31 @@ const Movies = () => {
                     }}
                     initial="hidden"
                     animate="show"
-                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-8 place-items-center sm:place-items-stretch"
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 sm:gap-8 min-h-[400px]"
                 >
-                    {movies.map((movie) => (
-                        <motion.div
-                            key={movie.id}
-                            variants={{
-                                hidden: { opacity: 0, y: 20 },
-                                show: { opacity: 1, y: 0 }
-                            }}
-                        >
-                            <MovieCard
-                                movie={movie}
-                                isSelected={false}
-                                onSelect={(m) => navigate(`/movie/${m.id}`)}
-                                isFavorite={isFavorite(movie.id)}
-                                onToggleFavorite={toggleFavorite}
-                            />
-                        </motion.div>
-                    ))}
+                    {movies.length > 0 ? (
+                        movies.map((movie) => (
+                            <motion.div
+                                key={movie.id}
+                                variants={{
+                                    hidden: { opacity: 0, y: 20 },
+                                    show: { opacity: 1, y: 0 }
+                                }}
+                            >
+                                <MovieCard
+                                    movie={movie}
+                                    isSelected={false}
+                                    onSelect={(m) => navigate(`/movie/${m.id}`)}
+                                    isFavorite={isFavorite(movie.id)}
+                                    onToggleFavorite={toggleFavorite}
+                                />
+                            </motion.div>
+                        ))
+                    ) : (
+                        <div className="col-span-full py-20 text-center">
+                            <p className="text-slate-500 font-bold uppercase tracking-[0.3em]">No frequencies detected in this sector.</p>
+                        </div>
+                    )}
                 </motion.div>
             </div>
         </div>

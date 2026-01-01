@@ -78,23 +78,23 @@
 
   /* Fluid Typography & Hierarchy */
   .text-fluid-h1 {
-    font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem);
+    font-size: clamp(2rem, 5vw + 1rem, 4.5rem);
     @apply font-black tracking-tighter leading-[0.9] text-white;
     text-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
   }
 
   .text-fluid-h2 {
-    font-size: clamp(2rem, 4vw + 1rem, 3.5rem);
+    font-size: clamp(1.75rem, 4vw + 1rem, 3.5rem);
     @apply font-extrabold tracking-tight leading-none text-white/90;
   }
 
   .text-fluid-h3 {
-    font-size: clamp(1.5rem, 3vw + 1rem, 2.5rem);
+    font-size: clamp(1.25rem, 3vw + 1rem, 2.5rem);
     @apply font-bold tracking-tight text-white/80;
   }
 
   .text-fluid-subtitle {
-    font-size: clamp(1rem, 1.5vw + 0.5rem, 1.25rem);
+    font-size: clamp(0.875rem, 1.5vw + 0.5rem, 1.25rem);
     @apply font-medium text-slate-400 leading-relaxed;
   }
 
@@ -104,6 +104,16 @@
 
   .text-body {
     @apply text-base font-light leading-relaxed text-slate-300;
+  }
+
+  /* Touch-friendly utilities */
+  .touch-target {
+    @apply min-w-[44px] min-h-[44px];
+    touch-action: manipulation;
+  }
+
+  .touch-action-pan {
+    touch-action: pan-x pan-y;
   }
 
   /* Safe Areas */
@@ -183,6 +193,9 @@
   /* Button System */
   .btn-base {
     @apply inline-flex items-center justify-center font-bold tracking-wider uppercase transition-all duration-300 active:scale-[0.97] disabled:opacity-50 disabled:cursor-not-allowed select-none;
+    touch-action: manipulation;
+    min-width: 44px;
+    min-height: 44px;
   }
 
   .btn-primary {

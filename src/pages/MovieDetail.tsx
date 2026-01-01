@@ -116,7 +116,7 @@ const MovieDetail = () => {
             </motion.header>
 
             {/* Immersive Backdrop */}
-            <div className="relative h-[70vh] sm:h-[80vh] lg:h-screen overflow-hidden">
+            <div className="relative h-[70vh] sm:h-[60vh] lg:h-screen overflow-hidden">
                 <motion.div
                     style={{ y: backdropY, opacity: backdropOpacity }}
                     className="absolute inset-0"
@@ -140,7 +140,7 @@ const MovieDetail = () => {
                             initial={{ opacity: 0, scale: 0.9, y: 50 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             transition={{ duration: 1, type: "spring" }}
-                            className="w-32 sm:w-48 lg:w-56 xl:w-72 aspect-[2/3] rounded-2xl lg:rounded-3xl overflow-hidden border border-white/20 shadow-[0_50px_100px_rgba(0,0,0,0.8)] group shrink-0"
+                            className="w-40 sm:w-48 lg:w-56 xl:w-72 aspect-[2/3] rounded-2xl lg:rounded-3xl overflow-hidden border border-white/20 shadow-[0_50px_100px_rgba(0,0,0,0.8)] group shrink-0"
                         >
                             <img
                                 src={tmdbAPI.getImageUrl(movie.poster_path)}
@@ -162,7 +162,7 @@ const MovieDetail = () => {
                             <motion.h1
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter leading-[0.9] uppercase text-center lg:text-left"
+                                className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter leading-[0.9] uppercase text-center lg:text-left"
                             >
                                 <span className="block text-white drop-shadow-2xl">{movie.title}</span>
                             </motion.h1>
@@ -173,17 +173,17 @@ const MovieDetail = () => {
                                 transition={{ delay: 0.5 }}
                                 className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4"
                             >
-                                <div className="flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
+                                <div className="flex items-center gap-2 px-3 py-1.5 sm:px-6 sm:py-3 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
                                     <Star className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-500 fill-current" />
-                                    <span className="font-bold text-xs sm:text-sm">{movie.vote_average.toFixed(1)}</span>
+                                    <span className="font-bold text-[10px] sm:text-sm">{movie.vote_average.toFixed(1)}</span>
                                 </div>
-                                <div className="flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
+                                <div className="flex items-center gap-2 px-3 py-1.5 sm:px-6 sm:py-3 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
                                     <Calendar className="w-3 h-3 sm:w-4 sm:h-4 text-secondary" />
-                                    <span className="font-bold text-xs sm:text-sm">{movie.release_date.split('-')[0]}</span>
+                                    <span className="font-bold text-[10px] sm:text-sm">{movie.release_date.split('-')[0]}</span>
                                 </div>
-                                <div className="flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 rounded-xl sm:rounded-2xl bg-primary/10 border border-primary/20 backdrop-blur-md text-primary">
+                                <div className="flex items-center gap-2 px-3 py-1.5 sm:px-6 sm:py-3 rounded-xl sm:rounded-2xl bg-primary/10 border border-primary/20 backdrop-blur-md text-primary">
                                     <Music className="w-3 h-3 sm:w-4 sm:h-4" />
-                                    <span className="font-bold text-xs sm:text-sm">{songs.length} Tracks</span>
+                                    <span className="font-bold text-[10px] sm:text-sm">{songs.length} Tracks</span>
                                 </div>
                             </motion.div>
                         </div>
@@ -223,7 +223,7 @@ const MovieDetail = () => {
                             <h2 className="text-meta text-primary">About</h2>
                         </div>
 
-                        <p className="text-lg sm:text-xl lg:text-2xl font-light leading-relaxed text-gray-400">
+                        <p className="text-base sm:text-xl lg:text-2xl font-light leading-relaxed text-gray-400 text-center lg:text-left">
                             {movie.overview}
                         </p>
 

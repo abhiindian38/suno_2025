@@ -39,8 +39,13 @@ export const youtubeService = {
             }
 
             return null;
-        } catch (error) {
-            console.error('YouTube search error:', error);
+        } catch (error: unknown) {
+            const axiosError = error as { response?: { status?: number; data?: unknown } };
+            if (axiosError.response?.status === 403) {
+                console.error('YouTube API Error: 403 Forbidden. This usually means the API quota is exceeded or the key is restricted.', axiosError.response.data);
+            } else {
+                console.error('YouTube search error:', error);
+            }
             return null;
         }
     },

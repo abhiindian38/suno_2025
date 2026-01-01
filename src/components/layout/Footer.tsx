@@ -23,8 +23,8 @@ export default function Footer() {
                 className="flex flex-col items-center gap-1"
             >
                 <div className="relative group cursor-default">
-                    <span className="text-[9px] md:text-[11px] font-medium tracking-[0.5em] uppercase text-white/20 transition-all duration-1000 group-hover:text-white/40 group-hover:tracking-[0.55em]">
-                        Developed by <a href="https://x.com/whyabhishekh" target="_blank" rel="noopener noreferrer" className="text-white/40 group-hover:text-primary transition-all duration-700 hover:underline decoration-primary/50 underline-offset-2 cursor-pointer">Abhishek</a> • {currentYear}
+                    <span className="text-[8px] sm:text-[9px] md:text-[11px] font-medium tracking-[0.4em] sm:tracking-[0.5em] uppercase text-white/20 transition-all duration-1000 group-hover:text-white/40 group-hover:tracking-[0.45em] sm:group-hover:tracking-[0.55em]">
+                        Developed by <a href="https://x.com/whyabhishekh" target="_blank" rel="noopener noreferrer" className="text-white/40 group-hover:text-primary transition-all duration-700 hover:underline decoration-primary/50 underline-offset-2 cursor-pointer inline-block min-w-[44px] min-h-[20px]">Abhishek</a> • {currentYear}
                     </span>
 
                     {/* Subtle precise glow behind the text */}
