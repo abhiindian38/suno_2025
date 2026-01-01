@@ -2,7 +2,7 @@
 
 **Suno 2025** is a high-fidelity, futuristic discovery platform for the Indian cinematic landscape of 2025. Designed as an "Intelligence Interface," it provides an immersive, audio-visual journey into the frequencies of the multiverse, blending the aesthetics of top-tier streaming services with advanced futuristic UI metaphors.
 
-🚀 **[Live Demo](https://suno-2025.vercel.app)** (Coming Soon)
+🚀 **[Live Demo](https://suno-2025.vercel.app)** | 📂 **[GitHub](https://github.com/abhiindian38/suno_2025)**
 
 ---
 
